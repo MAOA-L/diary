@@ -4,3 +4,4 @@
 app_diary/migrations/*.py
 app_upload/migrations/*.py
 
+/diary/settings.py
