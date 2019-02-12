@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'diary',
     'app_diary',
     'app_upload',
 ]
@@ -63,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'diary.globalContext.primary'
             ],
         },
     },
@@ -79,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
         'PORT': 3306,
-        'HOST': '',
-        'USER': '',
-        'PASSWORD': '',
+        'HOST': '47.106.236.37',
+        'USER': 'root',
+        'PASSWORD': '13486059134chen',
         'CONN_MAX_AGE': 700,
     }
 }

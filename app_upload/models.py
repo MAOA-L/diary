@@ -23,15 +23,24 @@ class UploadImage(models.Model):
 class Sort(models.Model):
     """分类"""
     # 分类编号
-    sort_feature = models.CharField(max_length=240, unique=True)
+    sort_feature = models.CharField(max_length=240, unique=True, verbose_name="类别编号")
     # 分类名称
-    sort_name = models.CharField(max_length=255)
+    sort_name = models.CharField(max_length=255, verbose_name="类别名称")
+
+    def __str__(self):
+        return self.sort_name
+
+    class Meta:
+        verbose_name_plural = verbose_name = "文章分类"
 
 
 class Label(models.Model):
     """分类对应的标签"""
-    label_feature = models.ForeignKey(Sort, on_delete=models.SET_NULL, to_field="sort_feature", blank=True, null=True)
-    label_name = models.CharField(max_length=255, null=True)
+    label_feature = models.ForeignKey(Sort, on_delete=models.SET_NULL, to_field="sort_feature", blank=True, null=True, verbose_name="类别名")
+    label_name = models.CharField(max_length=255, null=True, verbose_name="标签名")
+
+    class Meta:
+        verbose_name = verbose_name_plural = "标签"
 
 
 class Article(models.Model):
@@ -41,9 +50,9 @@ class Article(models.Model):
     # 文章长度
 
     # 文章的分类
-    article_sort = models.ForeignKey(Sort, on_delete=models.SET_NULL, to_field="sort_feature", blank=True, null=True)
+    article_sort = models.ForeignKey(Sort, on_delete=models.SET_NULL, to_field="sort_feature", blank=True, null=True, verbose_name="分类")
     # 文章的标签
-    article_label = models.CharField(max_length=255, null=True)
+    article_label = models.CharField(max_length=255, null=True, verbose_name="标签")
     # 文章发表时间
     article_time = models.DateField(auto_now_add=True)
     # 文章浏览数
@@ -51,9 +60,9 @@ class Article(models.Model):
     # 文章评论数
     article_comment = models.IntegerField()
     # 文章主题
-    article_theory = models.TextField()
+    article_theory = models.TextField(verbose_name="文章主题")
     # 文章网页代码
-    article_html = models.TextField()
+    article_html = models.TextField(verbose_name="文章内容")
 
 
 

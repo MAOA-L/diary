@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 import random
 import hashlib
 from .models import Diary, Log, AdminDiary
-from app_upload.models import Article
+from app_upload.models import Article, Sort
 from collections import defaultdict
 
 
@@ -66,13 +66,14 @@ def add_power(request):
 
 # @logging
 def index(request):
-    ArticleList = Article.objects.all().values().order_by('article_time')
+    article_list = Article.objects.all().select_related().order_by('article_time')
+    for _ in article_list:
+        print(_.article_sort.sort_name)
     # p = defaultdict(list)
     p = []
     # print("输出一下我的文章",ArticleList)
-    for i in ArticleList:
+    for i in article_list:
         p.append(i)
-    print(p)
     return render(request, 'index.html', {"articleList": p})
 
 
