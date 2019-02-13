@@ -46,7 +46,10 @@ class Label(models.Model):
 class Article(models.Model):
     """文章"""
     # 文章的编号
-    article_feature = models.CharField(max_length=100, primary_key=True)
+    article_feature = models.CharField(max_length=100, primary_key=True, verbose_name="文章编号")
+    # 文章标题
+    article_title = models.CharField(max_length=255, null=True, verbose_name="文章标题")
+
     # 文章长度
 
     # 文章的分类
@@ -54,9 +57,9 @@ class Article(models.Model):
     # 文章的标签
     article_label = models.CharField(max_length=255, null=True, verbose_name="标签")
     # 文章发表时间
-    article_time = models.DateField(auto_now_add=True)
+    article_time = models.DateField(auto_now_add=True, verbose_name="发表时间")
     # 文章浏览数
-    article_see = models.IntegerField()
+    article_see = models.IntegerField(verbose_name="浏览数")
     # 文章评论数
     article_comment = models.IntegerField()
     # 文章主题

@@ -13,9 +13,6 @@ urlpatterns = [
     path('', index),
     path('write', write),
     path('reward/search', search),
-    # path('reward/information', information),
-    # path('reward/save', save_information),
-    url('Article/(.*)', detail),
-    url('add_power', add_power),
+    url('articles/(.*)', detail),
 
 ]

@@ -745,6 +745,9 @@ pre .keyword,pre .javascript .function {
 	padding: 0 3px;
 	border: none
 }
+.post-body p{
+	text-align: center;
+}
 
 .post .group-picture-row {
 	overflow: hidden;
@@ -1286,6 +1289,7 @@ pre .keyword,pre .javascript .function {
 
 .post-body {
 	font-family: 'Lato',"PingFang SC","Microsoft YaHei",sans-serif;
+	padding: 0 20px 0 25px;
 }
 
 @media (max-width:767px) {
@@ -1612,6 +1616,7 @@ pre .keyword,pre .javascript .function {
 
 .post-meta-item-icon {
 	margin-right: 3px;
+	vertical-align: top;
 }
 
 @media (min-width:768px) and (max-width:991px) {
@@ -3647,6 +3652,6 @@ pre .keyword,pre .javascript .function {
 .icon-floder-close:before{
     content: "\e117";
 }
-.icon-eye:before:before{
+.icon-eye:before{
     content: "\e105";
 }

@@ -119,7 +119,8 @@ def write(request):
 
 # @jurisdiction
 def detail(request, article_feature):
-    return render(request, 'detail.html', {})
+    article = Article.objects.get(article_feature=article_feature)
+    return render(request, 'detail.html', {"article": article})
 
 
 def search(request):

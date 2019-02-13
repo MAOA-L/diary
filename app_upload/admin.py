@@ -14,8 +14,15 @@ class SortAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class SortAdmin(admin.ModelAdmin):
-    list_display = ('article_feature', 'article_sort', 'article_label', 'article_theory', 'article_html_short')
-    readonly_fields = ('article_feature',)
+    list_display = ('article_feature', 'article_title', 'article_sort',
+                    'article_label', 'article_theory', 'article_html_short')
+
+    readonly_fields = ('article_feature', 'article_time', 'article_see')
+    fieldsets = [
+        ("概览", {"fields": ("article_feature", "article_time", "article_see")}),
+        ("文章", {"fields": ("article_sort", "article_label", "article_html")})
+
+    ]
 
     def article_html_short(self, obj):
         if len(obj.article_html) > 20:

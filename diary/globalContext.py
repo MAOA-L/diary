@@ -10,5 +10,7 @@
 
 def primary(request):
     return {"primary": {
-        "project_home_path": "localhost"
+        "project_path": "http://localhost/",
+        "project_name": "mydemo/",
+        "author": "MAOA-L",
     }}
