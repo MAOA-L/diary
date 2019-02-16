@@ -45,7 +45,6 @@
 </head>
 <body>
 <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
     {% include "base/navigation.html" %}
     <main id="main" class="main">
         <div class="main-inner">
@@ -177,24 +176,7 @@
     }
 </script>
 
-<script type="text/javascript" src="{% static "js/index.js" %}"></script>
-{#适应小屏幕#}
-<script type="text/javascript" src="{% static "js/fastclick.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/jquery.lazyload.js" %}"></script>
-<script type="text/javascript" src="{% static "js/velocity.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/velocity.ui.min.js" %}"></script>
-<script type="text/javascript" src="{% static "js/jquery.fancybox.pack.js" %}"></script>
-<script type="text/javascript" src="{% static "js/utils.js" %}"></script>
-<script type="text/javascript" src="{% static "js/motion.js" %}"></script>
-<script type="text/javascript" src="{% static "js/affix.js" %}"></script>
-<script type="text/javascript" src="{% static "js/pisces.js" %}"></script>
-<script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
-<link rel="stylesheet" href="{% static "css/default.css" %}">
-<link rel="stylesheet" href="{% static "css/instantsearch.min.css" %}">
-<script src="{% static "css/instantsearch.min.css" %}"></script>
-<script src="{% static "js/algolia-search.js" %}"></script>
-<script type="text/javascript" src="{% static 'js/scrollspy.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/post-details.js' %}"></script>
+{% include "base/script.html" %}
 
 </body>
 </html>

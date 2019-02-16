@@ -21,3 +21,7 @@ def index(request):
         result = [w for w in Sort.objects.all().values('id', 'sort_feature', 'sort_name')]
 
     return render(request, 'upload/upload.html', {'sort': result})
+
+
+def test(request):
+    return render(request, "upload/test.html", {})

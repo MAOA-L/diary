@@ -11,7 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="description" content="写点啥">
 
-    <script type="text/javascript" defer="" async="" src="{% static "js/uaest.js" %}"></script>
+{#    <script type="text/javascript" defer="" async="" src="{% static "js/uaest.js" %}"></script>#}
     <script type="text/javascript">
         var NexT = window.NexT || {};
         var CONFIG = {
@@ -47,7 +47,6 @@
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
 <div class="container sidebar-position-left page-home">
-    <div class="headband"></div>
     {% include "base/navigation.html" %}
     <main id="main" class="main">
         <div class="main-inner">
@@ -109,7 +108,7 @@
                                         {{ article.article_theory }}
                                     </p>
                                     <div class="post-button text-center">
-                                        <a class="btn" href="{{ primary.project_name }}articles/{{ article.article_feature }}" rel="contents" target="_blank">
+                                        <a class="btn" href="articles/{{ article.article_feature }}" rel="contents" target="_blank">
                                             阅读全文 »
                                         </a>
                                     </div>
@@ -154,22 +153,8 @@
     }
 </script>
 
+{% include "base/script.html" %}
 
-<script type="text/javascript" src="{% static "js/index.js" %}"></script>
-{#小屏幕时的动画加载#}
-<script type="text/javascript" src="{% static "js/fastclick.min.js" %}"></script>
-
-<script type="text/javascript" src="{% static "js/jquery.lazyload.js" %}"></script>
-
-<script type="text/javascript" src="{% static "js/velocity.min.js" %}"></script>
-
-<script type="text/javascript" src="{% static "js/velocity.ui.min.js" %}"></script>
-
-<script type="text/javascript" src="{% static "js/jquery.fancybox.pack.js" %}"></script>
-
-<script type="text/javascript" src="{% static "js/utils.js" %}"></script>
-<script type="text/javascript" src="{% static "js/motion.js" %}"></script>
-<script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
 {#<script type="text/javascript" src="{% static "js/affix.js" %}"></script>#}
 {#<script type="text/javascript" src="{% static "js/pisces.js" %}"></script>#}
 
