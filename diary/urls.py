@@ -18,12 +18,15 @@ from django.urls import path, include
 from django.conf.urls import url
 from app_diary import urls as app_diary_urls
 from app_upload import urls as app_upload_urls
+from app_admin import urls as app_admin_urls
 from django.views.static import serve
 from diary.settings import MEDIA_ROOT
 
+
 urlpatterns = [
     path('', include(app_diary_urls)),
-    path('upload', include(app_upload_urls)),
+    # path('upload', include(app_upload_urls)),
     path('admin/', admin.site.urls),
+    path('xadmin/', include(app_admin_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]

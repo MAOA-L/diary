@@ -8,9 +8,31 @@
  """
 
 
-def primary(request):
-    return {"primary": {
-        "project_path": "http://localhost/",
-        "project_name": "mydemo/",
-        "author": "MAOA-L",
-    }}
+class Primary:
+    global_context = {"primary": {
+            "project_path": "http://localhost/",
+            "project_name": "mydemo/",
+            "author": "MAOA-L",
+        }, "xadmin": {
+            "title": "Blog后台管理",
+            "name": "",
+            "version": "0.01",
+            "statistic": {
+                "parent_id": 1,
+                "current_id": 1,
+                "url": "/xadmin",
+                "title": "统计"
+            },
+            "publish": {
+                "parent_id": 2,
+                "current_id": 2,
+                "url": "publish",
+                "title": "文章发表",
+            }
+        },
+
+    }
+
+
+def primary(*args):
+    return Primary.global_context

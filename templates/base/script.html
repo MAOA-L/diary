@@ -1,0 +1,30 @@
+{% load static %}
+<script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/index.js" %}"></script>
+{#小屏幕时的动画加载#}
+<script type="text/javascript" src="{% static "js/fastclick.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.lazyload.js" %}"></script>
+<script type="text/javascript" src="{% static "js/velocity.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/velocity.ui.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.fancybox.pack.js" %}"></script>
+<script type="text/javascript" src="{% static "js/utils.js" %}"></script>
+<script type="text/javascript" src="{% static "js/motion.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
+<script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    'use strict';
+    {#  每n毫秒 增加一次  #}
+    NProgress.configure({ trickleSpeed: 200 });
+    {#  每次增加的值  #}
+    NProgress.inc(1.0);
+    $(document).ready(function(){
+　　  let timer_one = setTimeout(function () {
+          NProgress.set(0.7);
+          let timer_two = setTimeout(function () {
+              clearTimeout(timer_one);
+              NProgress.set(1.0);
+              clearTimeout(timer_two)
+          },300)
+      },300)
+　　});
+</script>
