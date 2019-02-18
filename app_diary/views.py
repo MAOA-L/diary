@@ -127,24 +127,3 @@ def search(request):
     return render(request, 'infor.html', {})
 
 
-# def information(request):
-#     id = request.POST.get('id')
-#     print(id)
-#     try:
-#         stu = student.objects.get(number=id)
-#     except Exception as e:
-#         stu = None
-#     return render(request, 'infor2.html', {'stu': stu})
-#
-#
-# def save_information(request):
-#     if request.is_ajax():
-#         id = request.POST.get('ID')
-#         eng = request.POST.get('eng')
-#         # print(id, eng)
-#         a = student.objects.filter(number=id).values('number')
-#         print(a)
-#         if not a:
-#             return HttpResponse('2')
-#         else:
-#             return HttpResponse('succ')

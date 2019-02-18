@@ -2,6 +2,10 @@ from django.shortcuts import render
 from diary.globalContext import Primary
 
 
+def login(request):
+    return render(request, "login.html", {})
+
+
 def index(request):
     context = {
         "parent_id": Primary.global_context["xadmin"]["statistic"]["parent_id"] - 1,

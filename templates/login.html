@@ -1,0 +1,85 @@
+<!doctype html>
+{% load static %}
+<html lang="en" xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static "images/base/siteIco.png" %}" type="image/x-icon" />
+	<link rel="stylesheet" href="{% static "css/xadmin.css" %}">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
+    <script type="text/javascript" src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+    <script src="{% static "lib/layui/layui.js" %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static "js/xadmin.js" %}"></script>
+    <script src="//at.alicdn.com/t/font_1044938_56fhutq3a2h.js"></script>
+</head>
+<body>
+    <div class="login-logo"><h1>MAOA-L</h1></div>
+    <div class="login-box">
+        <form class="layui-form layui-form-pane" action="">
+              
+            <h3>登录你的帐号</h3>
+            <label class="login-title" for="username">帐号</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label login-form" style="color: white;padding: 8px 0">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-mine"></use>
+                    </svg>
+                </label>
+                <div class="layui-input-inline login-inline">
+                  <input type="text" name="username" lay-verify="required" placeholder="请输入你的帐号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <label class="login-title" for="password">密码</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label login-form" style="color: white;padding: 8px 0">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-lock"></use>
+                    </svg>
+                </label>
+                <div class="layui-input-inline login-inline">
+                  <input type="text" name="password" lay-verify="required" placeholder="请输入你的密码" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-warning pull-right" lay-submit lay-filter="login" type="submit">登录</button>
+                <span id="qqLoginBtn">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-ic_tencent_qq"></use>
+                    </svg>
+                </span>
+                <div class="forgot"><a href="#" class="forgot">忘记帐号或者密码</a></div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript"  charset="utf-8"
+    src="https://connect.qq.com/qc_jssdk.js" data-appid="APPID" data-redirecturi="REDIRECTURI"></script>
+
+    <script>
+        $(function  () {
+            layui.use('form', function(){
+              var form = layui.form();
+              //监听提交
+              form.on('submit(login)', function(data){
+                layer.msg(JSON.stringify(data.field),function(){
+                    location.href='index.html'
+                });
+                return false;
+              });
+            });
+        })
+        
+    </script>
+    <script>
+    //百度统计可去掉
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿/**
 
  @Name：layer v3.0.1 Web弹层组件
- @Author：贤心
+ @Author：
  @Site：http://layer.layui.com
  @License：LGPL
     

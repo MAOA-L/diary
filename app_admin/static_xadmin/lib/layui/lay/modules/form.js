@@ -269,8 +269,10 @@ layui.define('layer', function(exports){
       othis.removeClass(DANGER);
       if(verify[ver] && (isFn ? tips = verify[ver](value, item) : !verify[ver][0].test(value)) ){
         layer.msg(tips || verify[ver][1], {
-          icon: 5
-          ,shift: 6
+          // icon : 5,
+          shift: 6,
+          skin : "layui-layer-white",
+          time : 1000,
         });
         //非移动设备自动定位焦点
         if(!device.android && !device.ios){
@@ -290,11 +292,11 @@ layui.define('layer', function(exports){
     });
  
     //获取字段
-    return layui.event.call(this, MOD_NAME, 'submit('+ filter +')', {
-      elem: this
-      ,form: formElem
-      ,field: field
-    });
+    // return layui.event.call(this, MOD_NAME, 'submit('+ filter +')', {
+    //   elem: this
+    //   ,form: formElem
+    //   ,field: field
+    // });
   };
 
   //自动完成渲染
