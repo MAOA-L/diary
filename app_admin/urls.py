@@ -12,6 +12,7 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('login', views.login),
+    path('qq_login', views.qq_login),
     path('statistic', views.index),
     path('publish', views.publish),
 
