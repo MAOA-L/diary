@@ -60,9 +60,9 @@
     
     editormd.title        = editormd.$name = "Editor.md";
     editormd.version      = "1.5.0";
-    editormd.homePage     = "https://pandao.github.io/editor.md/";
+    editormd.homePage     = "http:///";
     editormd.classPrefix  = "editormd-";
-    
+    // 这里可以选择 toolbar 的项目
     editormd.toolbarModes = {
         full : [
             "undo", "redo", "|", 
@@ -71,7 +71,7 @@
             "list-ul", "list-ol", "hr", "|",
             "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
             "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
-            "help", "info"
+            "help", "info", "upload",
         ],
         simple : [
             "undo", "redo", "|", 
@@ -220,10 +220,11 @@
             preview          : "fa-desktop",
             search           : "fa-search",
             fullscreen       : "fa-arrows-alt",
-            clear            : "fa-eraser",
+            // clear            : "fa-eraser",
             help             : "fa-question-circle",
-            info             : "fa-info-circle"
-        },        
+            info             : "fa-info-circle",
+            upload           : "fa-cloud-upload",
+        },
         toolbarIconTexts     : {},
         
         lang : {
@@ -265,10 +266,11 @@
                 unwatch          : "开启实时预览",
                 preview          : "全窗口预览HTML（按 Shift + ESC还原）",
                 fullscreen       : "全屏（按ESC还原）",
-                clear            : "清空",
+                // clear            : "清空",
                 search           : "搜索",
                 help             : "使用帮助",
-                info             : "关于" + editormd.title
+                info             : "关于" + editormd.title,
+                upload           : "发布文章"
             },
             buttons : {
                 enter  : "确定",
@@ -3181,6 +3183,11 @@
 
         info : function() {
             this.showInfoDialog();
+        },
+
+        upload : function () {
+            // console.log(this.save().preview)
+            console.log(this.getPreviewedHTML())
         }
     };
     
