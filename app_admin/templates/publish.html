@@ -56,37 +56,44 @@
                 give_height();
             });
             testEditor = editormd("editormd", {
-                width        : "inherit",
-                height       : "100%",
-                margin       : "50px 0 0",
-                value        : '',
-                flowChart    : true,
-                tex          : true,
+                width: "inherit",
+                height: "100%",
+                margin: "50px 0 0",
+                value: '',
+                flowChart: true,
+                tex: true,
                 // Editor.md theme, default or dark, change at v1.5.0
                 // You can also custom css class .editormd-preview-theme-xxxx
-                theme        : (localStorage.theme) ? localStorage.theme : "dark",
+                theme: (localStorage.theme) ? localStorage.theme : "dark",
 
                 // Preview container theme, added v1.5.0
                 // You can also custom css class .editormd-preview-theme-xxxx
-                previewTheme : (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
+                previewTheme: (localStorage.previewTheme) ? localStorage.previewTheme : "dark",
 
                 // Added @v1.5.0 & after version is CodeMirror (editor area) theme
-                editorTheme  : (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
-                path         : '/static/lib/'
+                editorTheme: (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
+                path: '/static/lib/'
             });
+            {#$("li").on( "click", function () {#}
+            {#    console.log("in");#}
+            {#    #}
+            {#})#}
+            setTimeout(function () {
+                console.log(editormd.property.save());
+            },2000)
         });
+            document.addEventListener('visibilitychange', function () {
+                let isHidden = document.hidden;
+                if (isHidden) {
+                    document.title = document.title + '-不写文章跑去干嘛';
+                } else {
+                    document.title = '发表';
+                }
+            });
+            window.onbeforeunload = function (event) {
+                return "提示：您尚有未保存的内容，离开本页将丢失编辑内容！:)";
+            };
 
-        document.addEventListener('visibilitychange', function() {
-            let isHidden = document.hidden;
-            if (isHidden) {
-                document.title = document.title + '-不写文章跑去干嘛';
-            } else {
-                document.title = '发表';
-            }
-        });
-        window.onbeforeunload = function(event) {
-           return "提示：您尚有未保存的内容，离开本页将丢失编辑内容！:)";
-        };
     </script>
 {% endblock %}
 

@@ -180,7 +180,7 @@
             },
             lowercase : function() {
                 return editormd.toolbarHandlers.lowercase;
-            }
+            },
         },
         toolbarCustomIcons   : {               // using html tag create toolbar icon, unused default <a> tag.
             lowercase        : "<a href=\"javascript:;\" title=\"Lowercase\" unselectable=\"on\"><i class=\"fa\" name=\"lowercase\" style=\"font-size:24px;margin-top: -10px;\">a</i></a>",
@@ -3187,7 +3187,7 @@
 
         upload : function () {
             // console.log(this.save().preview)
-            console.log(this.getPreviewedHTML())
+            return this.getPreviewedHTML();
         }
     };
     
