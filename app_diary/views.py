@@ -66,7 +66,7 @@ def add_power(request):
 
 # @logging
 def index(request):
-    article_list = Article.objects.all().select_related().order_by('article_time')
+    article_list = Article.objects.all().select_related().order_by('-article_time')
     for _ in article_list:
         print(_.article_sort.sort_name)
     # p = defaultdict(list)

@@ -4384,13 +4384,15 @@ hr.editormd-page-break {
     color: #444444;
   }
   .editormd-preview-theme-dark .typ {
-    color: #606;
+    /*color: #606;*/
+    color: #cc73b0;
   }
   .editormd-preview-theme-dark .lit {
     color: #066;
   }
   .editormd-preview-theme-dark .pun, .editormd-preview-theme-dark .opn, .editormd-preview-theme-dark .clo {
-    color: #660;
+    /*color: #660;*/
+    color: #b1b1a6;
   }
   .editormd-preview-theme-dark .tag {
     color: #ff9900;

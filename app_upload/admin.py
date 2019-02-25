@@ -21,7 +21,6 @@ class SortAdmin(admin.ModelAdmin):
     fieldsets = [
         ("概览", {"fields": ("article_feature", "article_time", "article_see")}),
         ("文章", {"fields": ("article_sort", "article_label", "article_html")})
-
     ]
 
     def article_html_short(self, obj):

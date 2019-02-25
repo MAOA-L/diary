@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static "css/editormd.css"%}">
+    <style>
+        .editormd-preview-theme-dark pre .pln {
+            color: #d8caca;
+        }
+        .editormd-preview-theme-dark pre {
+            background: #111;
+        }
+        .editormd-preview-theme-dark .com {
+            color: #d48080;
+        }
+        .editormd-preview-theme-dark{
+            background: none;width: auto
+        }
+    </style>
+</head>
+<body>
+<div class="editormd-preview-theme-dark markdown-body editormd-preview-container" previewcontainer="true" style="padding: 20px;">
 {% autoescape off %}
 {{ article.article_html }}
 {% endautoescape %}
+</div>
+</body>
+</html>
