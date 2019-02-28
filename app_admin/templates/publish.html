@@ -9,10 +9,69 @@
             .page-content{
                 padding: 0 !important;
             }
+            .input-group {
+                position: relative;
+                display: table;
+                border-collapse: separate;
+            }
+        .row span, .row input, .row button{
+            background-color: #252a2f;
+        }
+        .btn .btn-default, .btn-default:hover, .btn-default:active, .btn-default:focus,.open>.dropdown-toggle.btn-default,
+        .open>.dropdown-toggle.btn-default:hover,.open>.dropdown-toggle.btn-default:focus,
+        .open>.dropdown-toggle.btn-default:active{
+            color: #e6e6e6;
+            background-color: #333;
+            border-color: #adadad;
+        }
+        .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+            color: #262626;
+            text-decoration: none;
+            background-color: #d5eaea;
+        }
+        .input-group-addon, #titleName, .input-group-btn button{
+            border: none !important;
+            border-radius: 0 !important;
+            height: 34px;
+        }
         </style>
     {% endblock %}
 {% block xadmin_title %}{{ xadmin.publish.title }}{% endblock %}
 {% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <span class="input-group-addon" style="color: white;">输入文章标题</span>
+      <input type="text" class="form-control" placeholder="标题" aria-label="..." style="color: white" id="titleName">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span id="sortName">分类</span>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right sortName">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="labelName">标签</span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right labelName">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
     <div id="editormd">
         <textarea style="display:none;"></textarea>
@@ -58,7 +117,7 @@
             testEditor = editormd("editormd", {
                 width: "inherit",
                 height: "100%",
-                margin: "50px 0 0",
+                margin: "0 0 0",
                 value: '',
                 flowChart: true,
                 tex: true,
@@ -74,13 +133,15 @@
                 editorTheme: (localStorage.editorTheme) ? localStorage.editorTheme : "pastel-on-dark",
                 path: '/static/lib/'
             });
-            {#$("li").on( "click", function () {#}
-            {#    console.log("in");#}
-            {#    #}
-            {#})#}
-            {#setTimeout(function () {#}
-            {#    console.log(editormd.property.save());#}
-            {#},2000)#}
+            /**
+             * 改变分类名
+             */
+            $("ul.sortName li a").click(function () {
+                $("#sortName").html($(this).html())
+            });
+            $("ul.labelName li a").click(function () {
+                $("#labelName").html($(this).html())
+            })
         });
             document.addEventListener('visibilitychange', function () {
                 let isHidden = document.hidden;

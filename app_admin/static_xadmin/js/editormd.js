@@ -3187,7 +3187,7 @@
 
         upload : function () {
             // console.log(this.save().preview)
-            console.log(this.getPreviewedHTML());
+            console.log(this.getPreviewedHTML(), $("#sortName").html(),$("#labelName").html(), $("#titleName").val() );
         }
     };
     

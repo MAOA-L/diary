@@ -79,7 +79,7 @@ body {
 }
 
 .btns button, .btn {
-    padding: 8px 10px;
+    /*padding: 8px 10px;*/
     background: #fff;
     border: 1px solid #ddd;
     -webkit-border-radius: 3px;
@@ -90,5 +90,5 @@ body {
 }
 
 .btns button:hover, .btn:hover {
-    background: #f6f6f6;
+    /*background: #f6f6f6;*/
 }
