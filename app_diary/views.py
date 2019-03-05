@@ -66,12 +66,11 @@ def add_power(request):
 
 # @logging
 def index(request):
-    article_list = Article.objects.all().select_related().order_by('-article_time')
+    # article_list = Article.objects.all().select_related().order_by('-article_time')
+    article_list = Article.objects.all().select_related().order_by('-gmt_create')
     for _ in article_list:
-        print(_.article_sort.sort_name)
-    # p = defaultdict(list)
+        print(_.uuid)
     p = []
-    # print("输出一下我的文章",ArticleList)
     for i in article_list:
         p.append(i)
     return render(request, 'index.html', {"articleList": p})
@@ -118,8 +117,8 @@ def write(request):
 
 
 # @jurisdiction
-def detail(request, article_feature):
-    article = Article.objects.get(article_feature=article_feature)
+def detail(request, uuid):
+    article = Article.objects.get(uuid=uuid)
     return render(request, 'detail.html', {"article": article})
 
 

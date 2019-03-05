@@ -13,6 +13,6 @@ urlpatterns = [
     path('', index),
     path('write', write),
     path('reward/search', search),
-    url('articles/(.*)', detail),
+    path('articles/<str:uuid>', detail),
 
 ]

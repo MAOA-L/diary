@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'diary',
     'app_diary',
     'app_upload',
-    'app_admin',
 ]
 
 MIDDLEWARE = [
@@ -80,18 +79,14 @@ WSGI_APPLICATION = 'diary.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
+        'NAME': 'BlogManager',
         'PORT': 3306,
         'HOST': '47.106.236.37',
-        'USER': 'root',
-        'PASSWORD': '13486059134chen',
+        'USER': 'admin',
+        'PASSWORD': 'admin1348',
         'CONN_MAX_AGE': 700,
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
