@@ -56,25 +56,16 @@
                         {% for article in articleList %}
                             <article class="post post-type-normal" itemscope="" itemtype="">
                             <div class="post-block" style="opacity: 1; display: block;">
-                                <link itemprop="mainEntityOfPage" href="/文章全路径">
-                                <span hidden="" itemprop="author" itemscope="" itemtype="/作者页">
-                                  <meta itemprop="name" content="香菜">
-                                  <meta itemprop="description" content="">
-                                  <meta itemprop="image" content="/uploads/avatar.png">
-                                </span>
-                                <span hidden="" itemprop="publisher" itemscope="" itemtype="">
-                                  <meta itemprop="name" content="香菜烤地瓜">
-                                </span>
                                 <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
                                     <h1 class="post-title" itemprop="name headline">
                                         <a class="post-title-link" href="" itemprop="url">
-                                            这里显示标题。。
+                                            {{ article.title }}
                                         </a>
                                     </h1>
                                     <div class="post-meta">
                                       <span class="post-time">
                                           <span class="post-meta-item-icon">
-                                            <i class="fa icon-time"></i>
+                                            <i class="iconfont icon-shijian"></i>
                                           </span>
                                           <span class="post-meta-item-text">发表于</span>
                                           <time title="创建于" itemprop="dateCreated datePublished" datetime="{{ article.gmt_create }}">
@@ -84,7 +75,7 @@
                                       <span class="post-category">
                                         <span class="post-meta-divider">|</span>
                                         <span class="post-meta-item-icon">
-                                            <i class="fa icon-floder-close"></i>
+                                            <i class="iconfont icon-wenjianjia"></i>
                                         </span>
                                         <span class="post-meta-item-text">分类于</span>
                                         <span >
@@ -96,7 +87,7 @@
                                       <span id="/2018/04/05/java/reactor.html" class="leancloud_visitors" data-flag-title="这里显示标题。。">
                                        <span class="post-meta-divider">|</span>
                                        <span class="post-meta-item-icon">
-                                         <i class="fa icon-eye"></i>
+                                         <i class="iconfont icon-yuedu"></i>
                                        </span>
                                          <span class="post-meta-item-text">阅读次数:</span>
                                          <span class="leancloud-visitors-count">{{ article.see_number }}</span>

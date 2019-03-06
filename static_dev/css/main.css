@@ -1247,7 +1247,7 @@ pre .keyword,pre .javascript .function {
 }
 
 .menu {
-	margin-top: 20px;
+	margin-top: 0;
 	padding-left: 0;
 	text-align: center
 }
@@ -3558,100 +3558,4 @@ pre .keyword,pre .javascript .function {
     .site-nav-off{
         height: 1px;
     }
-}
-
-@font-face {
-    font-family: 'Glyphicons Halflings';
-
-    src: url('../fonts/glyphicons-halflings-regular.eot');
-    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
-/* Apply these base styles to all icons */
-[class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: 'Glyphicons Halflings';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    text-decoration: none !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* Each icon is created by inserting the correct character into the
-   content of the :before pseudo element. Like a boss. */
-
-.icon-ghost:before {
-    content: "\f600";
-}
-.icon-feed:before {
-    content: "\f601";
-}
-.icon-twitter:before {
-    content: "\f602";
-    font-size: 1.1em;
-}
-.icon-google-plus:before {
-    content: "\f603";
-}
-.icon-facebook:before {
-    content: "\f604";
-}
-.icon-arrow-left:before {
-    /*    content: "\f605";*/
-    content: "\e259";
-}
-.icon-stats:before {
-    content: "\f606";
-}
-.icon-location:before {
-    content: "\f607";
-    margin-left: -3px; /* Tracking fix */
-}
-.icon-link:before {
-    content: "\f608";
-}
-.icon-home:before {
-    content: "\e021";
-}
-.icon-search:before {
-    content: "\e003";
-}
-.icon-trash:before {
-    content: "\e020";
-}
-.icon-tags:before {
-    content: "\e042";
-}
-.icon-sorts:before {
-    content: "\e150";
-}
-.icon-user:before {
-    content: "\e008";
-}
-.icon-version:before {
-  content: "\231b";
-}
-.icon-archive:before {
-  content: "\e121";
-}
-.icon-arrow-up:before{
-    content: "\e093";
-}
-.icon-king:before{
-    content: "\e211";
-}
-.icon-remove:before{
-    content: "\e014";
-}
-.icon-time:before{
-    content: "\e023";
-}
-.icon-floder-close:before{
-    content: "\e117";
-}
-.icon-eye:before{
-    content: "\e105";
 }
