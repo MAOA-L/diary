@@ -14,5 +14,6 @@ urlpatterns = [
     path('write', write),
     path('reward/search', search),
     path('articles/<str:uuid>', detail),
+    path('archive', archive),
 
 ]

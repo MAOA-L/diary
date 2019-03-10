@@ -30,6 +30,14 @@ class Primary:
                 "title": "文章发表",
             }
         },
+        'home': {
+            'url': '/',
+            'active': '',
+        },
+        'archive': {
+            'url': 'archive',
+            'active': '',
+        }
 
     }
 
