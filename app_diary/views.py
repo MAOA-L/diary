@@ -140,5 +140,14 @@ def archive(request):
     """
     p = copy.deepcopy(globalContext.primary())
     p['archive']['active'] = 'menu-item-active'
-    print(p)
+    # 获取所有文档的标题与时间
+    article = Article.objects.all().values('uuid', 'gmt_create', 'title')
+    # 统计所有文章数
+    article_count = Article.objects.count()
+    article_list = defaultdict(list)
+    for i in article:
+        i['time'] = i['gmt_create'].strftime('%m-%d')
+        article_list[i['gmt_create'].strftime("%Y")].append(i)
+    p['archive']['article'] = dict(article_list)
+    p['archive']['count'] = article_count
     return render(request, "archive.html", p)

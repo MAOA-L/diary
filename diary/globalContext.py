@@ -35,7 +35,7 @@ class Primary:
             'active': '',
         },
         'archive': {
-            'url': 'archive',
+            'url': '/archive',
             'active': '',
         }
 

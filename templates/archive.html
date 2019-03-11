@@ -6,42 +6,28 @@
             <div id="posts" class="posts-collapse">
                 <span class="archive-move-on"></span>
                 <span class="archive-page-counter">
-                    目前共计 193 篇日志。 继续努力。
+                    目前共计 {{ archive.count }} 篇日志。 继续努力。
                 </span>
-                <div class="collection-title" style="opacity: 1; display: block; transform: translateX(0px);">
-                    <h1 class="archive-year" id="archive-year-2018"
-                        style="opacity: 1; display: block; transform: translateX(0px);">2018</h1>
-                </div>
-                <article class="post post-type-normal" >
-                    <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
-                        <h2 class="post-title">
-                            <a class="post-title-link" href="https://www.xncoding.com/2018/06/25/java/jstack.html">
-                                <span itemprop="name">JVM性能分析工具jstack介绍</span>
-                            </a>
-                        </h2>
-                        <div class="post-meta">
-                            <time class="post-time" datetime="2018-06-25T23:19:22+08:00">
-                                06-25
-                            </time>
-                        </div>
-                    </header>
-                </article>
-                <article class="post post-type-normal" >
-                    <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
-                        <h2 class="post-title">
-                            <a class="post-title-link" href="https://www.xncoding.com/2018/04/05/java/reactor.html"
-                               itemprop="url">
-                                <span itemprop="name">聊聊Reactor I/O模型</span>
-                            </a>
-                        </h2>
-                        <div class="post-meta">
-                            <time class="post-time" itemprop="dateCreated" datetime="2018-04-05T09:23:12+08:00"
-                                  content="2018-04-05">
-                                04-05
-                            </time>
-                        </div>
-                    </header>
-                </article>
+                {% for i,j in archive.article.items %}
+                    <div class="collection-title" style="opacity: 1; display: block; transform: translateX(0px);">
+                        <h1 class="archive-year" id="" style="opacity: 1; display: block; transform: translateX(0px);">{{ i }}</h1>
+                    </div>
+                    {% for k in j %}
+                        <article class="post post-type-normal" >
+                            <header class="post-header" style="opacity: 1; display: block; transform: translateY(0px);">
+                                <h2 class="post-title">
+                                    <a class="post-title-link" href="/articles/{{ k.uuid }}">
+                                        <span itemprop="name">{{ k.title }}</span>
+                                    </a>
+                                </h2>
+                                <div class="post-meta">
+                                    <time class="post-time" datetime="{{ k.gmt_create }}">{{ k.time }}</time>
+                                </div>
+                            </header>
+                        </article>
+                    {% endfor %}
+                {% endfor %}
+
             </div>
             <nav class="pagination" style="opacity: 1; display: block;">
                 <span class="page-number current">1</span><a class="page-number"
