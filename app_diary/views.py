@@ -4,6 +4,8 @@ import hashlib
 from .models import Diary, Log, AdminDiary
 from app_upload.models import Article, Sort
 from collections import defaultdict
+from diary import globalContext
+import copy
 
 
 def logging(func):
@@ -73,7 +75,11 @@ def index(request):
     p = []
     for i in article_list:
         p.append(i)
-    return render(request, 'index.html', {"articleList": p})
+    g = copy.deepcopy(globalContext.primary())
+    g['home']['active'] = 'menu-item-active'
+    g['articleList'] = p
+    print(g)
+    return render(request, 'index.html', g)
 
 
 def write(request):
@@ -126,3 +132,13 @@ def search(request):
     return render(request, 'infor.html', {})
 
 
+def archive(request):
+    """
+    归档页面
+    :param request:
+    :return:
+    """
+    p = copy.deepcopy(globalContext.primary())
+    p['archive']['active'] = 'menu-item-active'
+    print(p)
+    return render(request, "archive.html", p)
