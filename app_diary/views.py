@@ -151,3 +151,9 @@ def archive(request):
     p['archive']['article'] = dict(article_list)
     p['archive']['count'] = article_count
     return render(request, "archive.html", p)
+
+
+def timeline(request):
+    p = copy.deepcopy(globalContext.primary())
+    p['version']['active'] = 'menu-item-active'
+    return render(request, "version_develop.html", p)

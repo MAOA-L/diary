@@ -37,6 +37,10 @@ class Primary:
         'archive': {
             'url': '/archive',
             'active': '',
+        },
+        'version': {
+            'url': '/timeline',
+            'active': '',
         }
 
     }

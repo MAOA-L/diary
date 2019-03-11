@@ -3,10 +3,22 @@
 <link href="{% static "css/jquery.fancybox.css" %}" rel="stylesheet" type="text/css">
 <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
 <link href="{% static "css/main.css" %}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1074635_wp94t70pxb.css">
+<link rel="stylesheet" href="http://at.alicdn.com/t/font_1074635_wp94t70pxb.css">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "images/design/apple-touch-icon-144-precomposed.png" %}">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "images/design/apple-touch-icon-114-precomposed.png" %}">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "images/design/apple-touch-icon-72-precomposed.png" %}">
 <link rel="apple-touch-icon-precomposed" href="{% static "images/design/apple-touch-icon-57-precomposed.png" %}">
-{% block link %}{% endblock %}
+{% block link %}
+    <style>
+        body{
+            background-color: #2f4050;
+        }
+        .iconfont{
+            font-size: inherit;
+        }
+        .menu-item-active i{
+            font-size: 16px;
+        }
+    </style>
+{% endblock %}
 
