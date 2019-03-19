@@ -2780,14 +2780,14 @@ a.forum-item-title:hover {
   text-align: center;
 }
 .vertical-timeline-icon i {
-  display: block;
-  width: 24px;
-  height: 24px;
-  position: relative;
-  left: 50%;
-  top: 40%;
-  margin-left: -12px;
-  margin-top: -9px;
+  /*display: block;*/
+  /*width: 24px;*/
+  /*height: 24px;*/
+  /*position: relative;*/
+  /*left: 49%;*/
+  /*top: 33%;*/
+  /*margin-left: -12px;*/
+  /*margin-top: -9px;*/
 }
 @media only screen and (min-width: 1170px) {
   .center-orientation .vertical-timeline-icon {
@@ -2801,8 +2801,8 @@ a.forum-item-title:hover {
   }
   .center-orientation .vertical-timeline-icon i {
     font-size: inherit;
-    margin-left: -12px;
-    margin-top: -10px;
+    /*margin-left: -12px;*/
+    /*margin-top: -10px;*/
   }
   .center-orientation .cssanimations .vertical-timeline-icon.is-hidden {
     visibility: hidden;
