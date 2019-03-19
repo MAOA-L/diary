@@ -84,9 +84,20 @@ DATABASES = {
         'HOST': '47.106.236.37',
         'USER': 'admin',
         'PASSWORD': 'admin1348',
-        'CONN_MAX_AGE': 700,
+        'CONN_MAX_AGE': 120,
+    },
+    'slave': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'BlogManager',
+        'PORT': 3306,
+        'HOST': '47.102.203.241',
+        'USER': 'user',
+        'PASSWORD': 'Wang.1314',
+        'CONN_MAX_AGE': 120,
     }
 }
+
+DATABASE_ROUTERS = ['diary.db_router.MasterSlaveDBRouter']
 
 AUTH_PASSWORD_VALIDATORS = [
     {
