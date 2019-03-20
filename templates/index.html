@@ -50,6 +50,8 @@
             <div class="content-wrap">
                 <div id="content" class="content">
                     <section id="posts" class="posts-expand">
+                        {% load pagination_tags %}
+                        {% autopaginate articleList 10 %}
                         {% for article in articleList %}
                             <article class="post post-type-normal" itemscope="" itemtype="">
                             <div class="post-block" style="opacity: 1; display: block;">
@@ -108,18 +110,19 @@
                             </div>
                         </article>
                         {% endfor %}
+                        {% paginate %}
                     </section>
 
                     <!--分页-->
-                    <nav class="pagination" style="opacity: 1; display: block;">
-                        <span class="page-number current">1</span>
-                        <a class="page-number" href="https://www.xncoding.com/page/2/">2</a>
-                        <span class="space">…</span>
-                        <a class="page-number" href="https://www.xncoding.com/page/19/">19</a>
-                        <a class="extend next" rel="next" href="https://www.xncoding.com/page/2/">
-                            <i class="iconfont icon-enter"></i>
-                        </a>
-                    </nav>
+{#                    <nav class="pagination" style="opacity: 1; display: block;">#}
+{#                        <span class="page-number current">1</span>#}
+{#                        <a class="page-number" href="https://www.xncoding.com/page/2/">2</a>#}
+{#                        <span class="space">…</span>#}
+{#                        <a class="page-number" href="https://www.xncoding.com/page/19/">19</a>#}
+{#                        <a class="extend next" rel="next" href="https://www.xncoding.com/page/2/">#}
+{#                            <i class="iconfont icon-enter"></i>#}
+{#                        </a>#}
+{#                    </nav>#}
                     <!--分页结束-->
                 </div>
             </div>
