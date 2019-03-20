@@ -1,12 +1,12 @@
 {% load static %}
-<aside id="sidebar" class="sidebar" style="margin-top: 420px; margin-left: initial;">
+<aside id="sidebar" class="sidebar" style="margin-top: 370px; margin-left: initial;">
     <div class="sidebar-inner affix-top" style="opacity: 1; display: block; transform: initial;">
         <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
             <div class="site-overview" style="max-height: 857px; width: calc(100% + 17px);">
                 <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                     <img class="site-author-image" itemprop="image" src="{% static "images/design/author.jpg" %}" alt="author">
-                    <p class="site-author-name" itemprop="name">author</p>
-                    <p class="site-description motion-element" itemprop="description">这是一句签名</p>
+                    <p class="site-author-name" itemprop="name">{{ primary.author }}</p>
+                    <p class="site-description motion-element" itemprop="description">{{ primary.motto }}</p>
                 </div>
                 <nav class="site-state motion-element">
                     <div class="site-state-item site-state-posts">
@@ -34,7 +34,7 @@
 {#                        RSS#}
 {#                    </a>#}
 {#                </div>#}
-                <div class="links-of-author motion-element">
+                <div class="links-of-author motion-element" style="text-align: center">
 {#                    <span class="links-of-author-item">#}
 {#                      <a href="https://github.com/yidao620c" target="_blank" title="GitHub">#}
 {#                          <i class="fa fa-fw fa-github"></i>GitHub</a>#}
@@ -67,20 +67,3 @@
         </section>
     </div>
 </aside>
-<script>
-$(document).ready(function(){//在文档加载完毕后执行
-	$(window).scroll(function(){//开始监听滚动条
-                //获取当前滚动条高度
-		var topp = $(document).scrollTop();
-		if(topp > 415){
-			var d = $('.affix-top');
-            d.removeClass('affix-top');
-            d.addClass('affix');
-		}else if(topp <= 415){
-		    var e = $('.affix');
-            e.removeClass('affix');
-            e.addClass('affix-top');
-        }
-	})
-})
-</script>

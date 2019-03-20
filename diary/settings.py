@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'diary.urls'
+AUTH_USER_MODEL = "app_diary.BlogUser"
 
 TEMPLATES = [
     {

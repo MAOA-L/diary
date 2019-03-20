@@ -1,11 +1,14 @@
+from django.db.models import Count
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 import random
 import hashlib
-from .models import Diary, Log, AdminDiary
+from .models import Log, AdminDiary
 from app_upload.models import Article, Sort
 from collections import defaultdict
 from diary import globalContext
 import copy
+import jieba
+import json
 
 
 def logging(func):
@@ -66,9 +69,7 @@ def add_power(request):
             return render(request, 'jurisdiction_show.html', context)
 
 
-# @logging
 def index(request):
-    # article_list = Article.objects.all().select_related().order_by('-article_time')
     article_list = Article.objects.all().select_related().order_by('-gmt_create')
     for _ in article_list:
         print(_.uuid)
@@ -82,46 +83,6 @@ def index(request):
     return render(request, 'index.html', g)
 
 
-def write(request):
-    if request.method == 'POST':
-        rand = random.random()
-        sha = hashlib.sha1()
-        sha.update(str(rand).encode('utf-8'))
-        sign = sha.hexdigest()
-        n = 1
-        f = True
-        for i in request.POST:
-            if 'text' in i:
-                if f:
-                    a = AdminDiary(header=request.POST['title'], text=request.POST[i], share=0, identification_id=sign)
-                    a.save()
-                    f = False
-                d = Diary()
-                d.identification_id = sign
-                d.header = request.POST['title']
-                d.text = request.POST[i]
-                # d.date = time.time()
-                d.order_num = n
-                d.user_id = '1123'
-                d.save()
-                n += 1
-
-        for i in request.FILES:
-            if 'pic' in i:
-                d = Diary()
-                d.identification_id = sign
-                d.header = request.POST['title']
-                d.images = request.FILES[i]
-                d.order_num = n
-                d.user_id = '1123'
-                d.save()
-                n += 1
-
-        return render(request, 'write.html', {})
-    else:
-        return render(request, 'write.html', {})
-
-
 # @jurisdiction
 def detail(request, uuid):
     article = Article.objects.get(uuid=uuid)
@@ -129,7 +90,21 @@ def detail(request, uuid):
 
 
 def search(request):
-    return render(request, 'infor.html', {})
+    p = copy.deepcopy(globalContext.primary())
+    p['search']['active'] = 'menu-item-active'
+    return render(request, 'search.html', {})
+
+
+def search_result(request, art):
+    words = jieba.cut(art, cut_all=False)
+    # 获取数据
+    result = []
+    for w in words:
+        if w == '' or w is None:
+            continue
+        result.append([w for w in Article.objects.values("uuid", "title").filter(title__contains=w)])
+
+    return HttpResponse(json.dumps(result))
 
 
 def archive(request):
@@ -151,6 +126,28 @@ def archive(request):
     p['archive']['article'] = dict(article_list)
     p['archive']['count'] = article_count
     return render(request, "archive.html", p)
+
+
+def categories(request):
+    """分类页面"""
+    p = copy.deepcopy(globalContext.primary())
+    p['categories']['active'] = 'menu-item-active'
+    # 获取分类信息
+    a = Article.objects.values("sort").annotate(count=Count('sort'))
+    p['categories']['data'] = [w for w in a]
+    p['categories']['count'] = Article.objects.values('sort').distinct().count()
+    return render(request, "categorie.html", p)
+
+
+def categories_list(request, name):
+    """具体分类列表页面"""
+    print(name)
+    p = copy.deepcopy(globalContext.primary())
+    p['categories']['active'] = 'menu-item-active'
+    p['categories']['sortName'] = name
+    p['categories']['article'] = Article.objects.filter(sort=name)
+
+    return render(request, "categorie_list.html", p)
 
 
 def timeline(request):

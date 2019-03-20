@@ -76,7 +76,7 @@
                                         </span>
                                         <span class="post-meta-item-text">分类于</span>
                                         <span >
-                                          <a href="#" itemprop="url" rel="index">
+                                          <a href="/categories/{{ article.sort }}" itemprop="url" rel="index">
                                             <span itemprop="name">{{ article.sort }}</span>
                                           </a>
                                         </span>
@@ -111,13 +111,15 @@
                     </section>
 
                     <!--分页-->
-{#                    <nav class="pagination" style="opacity: 1; display: block;">#}
-{#                        <span class="page-number current">1</span><a class="page-number"#}
-{#                                                                     href="https://www.xncoding.com/page/2/">2</a><span#}
-{#                            class="space">…</span><a class="page-number" href="https://www.xncoding.com/page/19/">19</a><a#}
-{#                            class="extend next" rel="next" href="https://www.xncoding.com/page/2/"><i#}
-{#                            class="fa fa-angle-right"></i></a>#}
-{#                    </nav>#}
+                    <nav class="pagination" style="opacity: 1; display: block;">
+                        <span class="page-number current">1</span>
+                        <a class="page-number" href="https://www.xncoding.com/page/2/">2</a>
+                        <span class="space">…</span>
+                        <a class="page-number" href="https://www.xncoding.com/page/19/">19</a>
+                        <a class="extend next" rel="next" href="https://www.xncoding.com/page/2/">
+                            <i class="iconfont icon-enter"></i>
+                        </a>
+                    </nav>
                     <!--分页结束-->
                 </div>
             </div>

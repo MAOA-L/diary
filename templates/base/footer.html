@@ -10,22 +10,5 @@
     </div>
 </footer>
 <div class="back-to-top">
-    <i class="fa icon-arrow-up"></i>
+    <i class="iconfont icon-shang"></i>
 </div>
-<script>
-$(document).ready(function(){//在文档加载完毕后执行
-	$(window).scroll(function(){//开始监听滚动条
-                //获取当前滚动条高度
-		var topp = $(document).scrollTop();
-        var d = $('.back-to-top');
-        if(topp > 100){
-            d.addClass('back-to-top-on');
-		}else if(topp <= 100){
-            d.removeClass('back-to-top-on');
-        }
-	});
-    $('.back-to-top').click(function () {
-       $('html, body, .content').animate({scrollTop: 0}, 300);
-    });
-})
-</script>
