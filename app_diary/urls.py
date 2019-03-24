@@ -11,6 +11,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', index),
+    path('index/<int:page>', index),
     path('reward/search', search),
     path('articles/<str:uuid>', detail),
     path('archive', archive),

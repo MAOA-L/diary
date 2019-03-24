@@ -9,6 +9,7 @@ from diary import globalContext
 import copy
 import jieba
 import json
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def logging(func):
@@ -69,17 +70,23 @@ def add_power(request):
             return render(request, 'jurisdiction_show.html', context)
 
 
-def index(request):
+def index(request, page=1):
+    page = 1 if page == 0 else page
     article_list = Article.objects.all().select_related().order_by('-gmt_create')
-    for _ in article_list:
-        print(_.uuid)
     p = []
     for i in article_list:
         p.append(i)
+    paginator = Paginator(article_list, 1)
+    try:
+        p = paginator.page(page)
+    except PageNotAnInteger:
+        p = paginator.page(1)
+    except EmptyPage:
+        p = paginator.page(paginator.num_pages)
+    print(p.number)
     g = copy.deepcopy(globalContext.primary())
     g['home']['active'] = 'menu-item-active'
     g['articleList'] = p
-    print(g)
     return render(request, 'index.html', g)
 
 

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'diary',
     'app_diary',
     'app_upload',
-    'dj_pagination',
 ]
 
 MIDDLEWARE = [
@@ -50,14 +49,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'dj_pagination.middleware.PaginationMiddleware',
 ]
 
 ROOT_URLCONF = 'diary.urls'
 AUTH_USER_MODEL = "app_diary.BlogUser"
-PAGINATION_DEFAULT_PAGINATION = 10         #每页显示数量
-PAGINATION_DEFAULT_WINDOW = 2    #  分页显示在当前页左右两边的页数
-PAGINATION_DEFAULT_ORPHANS = 0        #   最后一页显示的最小页数，默认为0
 
 TEMPLATES = [
     {

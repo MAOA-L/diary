@@ -41,7 +41,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body lang="zh-Hans">
 
 <div class="container sidebar-position-left page-home">
     {% include "base/navigation.html" %}
@@ -50,8 +50,6 @@
             <div class="content-wrap">
                 <div id="content" class="content">
                     <section id="posts" class="posts-expand">
-                        {% load pagination_tags %}
-                        {% autopaginate articleList 10 %}
                         {% for article in articleList %}
                             <article class="post post-type-normal" itemscope="" itemtype="">
                             <div class="post-block" style="opacity: 1; display: block;">
@@ -110,19 +108,28 @@
                             </div>
                         </article>
                         {% endfor %}
-                        {% paginate %}
                     </section>
 
                     <!--分页-->
-{#                    <nav class="pagination" style="opacity: 1; display: block;">#}
-{#                        <span class="page-number current">1</span>#}
-{#                        <a class="page-number" href="https://www.xncoding.com/page/2/">2</a>#}
+                    <nav class="pagination" style="opacity: 1; display: block;">
+                        {% if articleList.has_previous %}
+                            <a class="extend next" rel="next" href="{{ articleList.previous_page_number }}">
+                                <i class="iconfont icon-return"></i>
+                            </a>
+                        {% endif %}
+
+                        <span class="page-number current">{{ articleList.number }}</span>
+
+{#                        <a class="page-number" href="">2</a>#}
 {#                        <span class="space">…</span>#}
-{#                        <a class="page-number" href="https://www.xncoding.com/page/19/">19</a>#}
-{#                        <a class="extend next" rel="next" href="https://www.xncoding.com/page/2/">#}
-{#                            <i class="iconfont icon-enter"></i>#}
-{#                        </a>#}
-{#                    </nav>#}
+{#                        <a class="page-number" href="">19</a>#}
+                        {% if articleList.has_next %}
+                            <a class="extend prev" href="{{ articleList.next_page_number }}">{{ articleList.next_page_number }}</a>
+                            <a class="extend prev" href="{{ articleList.next_page_number }}">
+                                <i class="iconfont icon-enter"></i>
+                            </a>
+                        {% endif %}
+                    </nav>
                     <!--分页结束-->
                 </div>
             </div>
