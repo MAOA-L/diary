@@ -7,17 +7,21 @@
  @Describe: 定义全局变量供模板直接使用
  """
 from app_diary.models import BlogUser
-
-user = BlogUser.objects.get(username="MAOA")
+from app_upload.models import Article, Sort
 
 
 class Primary:
+    user = BlogUser.objects.get(username="MAOA")
+    article_count = Article.objects.count()
+    sort_count = Sort.objects.count()
     global_context = {
         "primary": {
             "project_path": "http://localhost/",
             "project_name": "mydemo/",
             "author": user.username,
             "motto": user.motto,
+            "article_count": article_count,
+            "sort_count": sort_count
         },
         # "xadmin": {
         #     "title": "Blog后台管理",

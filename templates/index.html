@@ -113,9 +113,10 @@
                     <!--分页-->
                     <nav class="pagination" style="opacity: 1; display: block;">
                         {% if articleList.has_previous %}
-                            <a class="extend next" rel="next" href="{{ articleList.previous_page_number }}">
+                            <a class="extend next" rel="next" href="/index/{{ articleList.previous_page_number }}">
                                 <i class="iconfont icon-return"></i>
                             </a>
+                            <a class="extend prev" href="/index/{{ articleList.previous_page_number }}">{{ articleList.previous_page_number }}</a>
                         {% endif %}
 
                         <span class="page-number current">{{ articleList.number }}</span>
@@ -124,8 +125,8 @@
 {#                        <span class="space">…</span>#}
 {#                        <a class="page-number" href="">19</a>#}
                         {% if articleList.has_next %}
-                            <a class="extend prev" href="{{ articleList.next_page_number }}">{{ articleList.next_page_number }}</a>
-                            <a class="extend prev" href="{{ articleList.next_page_number }}">
+                            <a class="extend prev" href="/index/{{ articleList.next_page_number }}">{{ articleList.next_page_number }}</a>
+                            <a class="extend prev" href="/index/{{ articleList.next_page_number }}">
                                 <i class="iconfont icon-enter"></i>
                             </a>
                         {% endif %}

@@ -76,7 +76,7 @@ def index(request, page=1):
     p = []
     for i in article_list:
         p.append(i)
-    paginator = Paginator(article_list, 1)
+    paginator = Paginator(article_list, 15)
     try:
         p = paginator.page(page)
     except PageNotAnInteger:
@@ -92,6 +92,10 @@ def index(request, page=1):
 
 # @jurisdiction
 def detail(request, uuid):
+    # 增加浏览数
+    a = Article.objects.get(uuid=uuid)
+    a.see_number += 1
+    Article.save(a)
     article = Article.objects.get(uuid=uuid)
     return render(request, 'detail.html', {"article": article})
 
@@ -107,10 +111,11 @@ def search_result(request, art):
     # 获取数据
     result = []
     for w in words:
+        print(w)
         if w == '' or w is None:
             continue
         result.append([w for w in Article.objects.values("uuid", "title").filter(title__contains=w)])
-
+    print(result)
     return HttpResponse(json.dumps(result))
 
 
