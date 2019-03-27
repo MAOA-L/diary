@@ -11,4 +11,4 @@ EXPOSE 8081
 
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8081"]
 RUN chmod 777 start.sh
-CMD ["start.sh"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8081"]
