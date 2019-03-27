@@ -5,8 +5,7 @@ WORKDIR /app
 COPY diary diary
 COPY manage.py requirements.txt /app/
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-        python manage.py collectstatic --noinput
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8081
 
