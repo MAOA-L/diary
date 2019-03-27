@@ -94,11 +94,11 @@ def index(request, page=1):
 def detail(request, uuid):
     # 增加浏览数
     a = Article.objects.get(uuid=uuid)
-    if not a.see_number:
+    print(a.see_number)
+    if a.see_number is None:
         a.see_number = 0
     a.see_number += 1
     Article.save(a)
-    # article = Article.objects.get(uuid=uuid)
     return render(request, 'detail.html', {"article": a})
 
 
