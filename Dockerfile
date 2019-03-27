@@ -1,11 +1,11 @@
-FROM python3.7.0
+FROM python:3.7
 
 WORKDIR /app
 
 COPY diary diary
 COPY manage.py requirements.txt /app/
 
-RUN pip install -r requirements.txt && \
+RUN pip install --no-cache-dir -r requirements.txt && \
         python manage.py collectstatic --noinput
 
 EXPOSE 8081
