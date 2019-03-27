@@ -96,8 +96,8 @@ def detail(request, uuid):
     a = Article.objects.get(uuid=uuid)
     a.see_number += 1
     Article.save(a)
-    article = Article.objects.get(uuid=uuid)
-    return render(request, 'detail.html', {"article": article})
+    # article = Article.objects.get(uuid=uuid)
+    return render(request, 'detail.html', {"article": a})
 
 
 def search(request):
