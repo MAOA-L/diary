@@ -2,4 +2,4 @@ Django==2.1.7
 PyMySQL==0.9.3
 jieba==0.39
 requests==2.21.0
-
+Pillow==5.4.1
