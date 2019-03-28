@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from django.views import static
+
 from app_diary import urls as app_diary_urls
 from django.views.static import serve
+
+from diary import settings
 from diary.settings import MEDIA_ROOT
 
 
@@ -26,5 +30,6 @@ urlpatterns = [
     # path('upload', include(app_upload_urls)),
     # path('admin/', admin.site.urls),
     # path('xadmin/', include(app_admin_urls)),
+    url(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
