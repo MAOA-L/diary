@@ -394,7 +394,7 @@
 
 .editormd-container-mask,
 .editormd-dialog-mask-con {
-  background: url(../images/loading.gif) no-repeat center center;
+  background: url(/static/img/base/loading.gif) no-repeat center center;
   -webkit-background-size: 32px 32px;
   /* Chrome, iOS, Safari */
   -moz-background-size: 32px 32px;
@@ -414,13 +414,13 @@
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   .editormd-container-mask,
   .editormd-dialog-mask-con {
-    background-image: url(../images/loading@2x.gif);
+    background-image: url(../images/base/loading@2x.gif);
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 3), only screen and (min-device-pixel-ratio: 3) {
   .editormd-container-mask,
   .editormd-dialog-mask-con {
-    background-image: url(../images/loading@3x.gif);
+    background-image: url(../images/base/loading@3x.gif);
   }
 }
 .editormd-code-block-dialog textarea,
@@ -4384,13 +4384,15 @@ hr.editormd-page-break {
     color: #444444;
   }
   .editormd-preview-theme-dark .typ {
-    color: #606;
+    /*color: #606;*/
+    color: #cc73b0;
   }
   .editormd-preview-theme-dark .lit {
     color: #066;
   }
   .editormd-preview-theme-dark .pun, .editormd-preview-theme-dark .opn, .editormd-preview-theme-dark .clo {
-    color: #660;
+    /*color: #660;*/
+    color: #b1b1a6;
   }
   .editormd-preview-theme-dark .tag {
     color: #ff9900;
