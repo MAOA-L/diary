@@ -1,13 +1,29 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.timezone import now
 
 
-class User(models.Model):
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField('用户名', max_length=255)
-    icon = models.ImageField('头像地址', max_length=255)
+# class User(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     name = models.CharField('用户名', max_length=255)
+#     icon = models.ImageField('头像地址', max_length=255)
+#
+#     def __str__(self):
+#         return self.name
 
-    def __str__(self):
-        return self.name
+
+class BlogUser(AbstractUser, models.Model):
+    id = models.AutoField("ID", primary_key=True)
+    openId = models.CharField(max_length=50)
+    gmtCreate = models.DateTimeField("创建时间", default=now)
+    gmtModified = models.DateTimeField("修改时间", default=now)
+    phoneNumber = models.CharField("手机号", max_length=20)
+    nickname = models.CharField('昵称', max_length=100, blank=True)
+    mugshot = models.ImageField('头像', upload_to='upload/mugshots', blank=True)
+    motto = models.CharField('座右铭', max_length=255, null=True)
+
+    class Meta:
+        db_table = "account_bloguser"
 
 
 class AdminDiary(models.Model):
@@ -20,24 +36,6 @@ class AdminDiary(models.Model):
 
     class Meta:
         verbose_name = verbose_name_plural = '日记分享管理'
-
-
-class Diary(models.Model):
-    identification_id = models.CharField(max_length=255)
-    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    header = models.CharField(max_length=255)
-    text = models.TextField(null=True)
-    audio = models.FilePathField(max_length=255, null=True)
-    images = models.ImageField(null=True, upload_to='images/')
-    code = models.CharField(max_length=255, null=True)
-    sort = models.CharField(max_length=255, null=True)
-    label = models.CharField(max_length=255, null=True)
-    date = models.DateField(auto_now=True)
-    date_time = models.TimeField(auto_now=True)
-    order_num = models.IntegerField()
-
-    class Meta:
-        verbose_name = verbose_name_plural = '日记管理'
 
 
 class Category(models.Model):

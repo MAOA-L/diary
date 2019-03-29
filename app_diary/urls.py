@@ -11,11 +11,13 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', index),
-    path('write', write),
+    path('index/<int:page>', index),
     path('reward/search', search),
-    # path('reward/information', information),
-    # path('reward/save', save_information),
-    url('Article/(.*)', detail),
-    url('add_power', add_power),
-
+    path('articles/<str:uuid>', detail),
+    path('archive', archive),
+    path('categories', categories),
+    path('categories/<str:name>/', categories_list),
+    path('search', search),
+    path('search/<str:art>', search_result),
+    path('timeline', timeline)
 ]

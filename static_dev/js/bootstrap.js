@@ -20,9 +20,9 @@ $(document).ready(function () {
     var animateAction = isSiteNavOn ? 'slideUp' : 'slideDown';
     var animateCallback = isSiteNavOn ? 'removeClass' : 'addClass';
 
-    $siteNav.stop()[animateAction]('fast', function () {
-      $siteNav[animateCallback](ON_CLASS_NAME);
-    });
+    // $siteNav.stop()[animateAction]('fast', function () {
+    //   $siteNav[animateCallback](ON_CLASS_NAME);
+    // });
   });
 
   /**

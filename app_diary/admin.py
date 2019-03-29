@@ -1,6 +1,4 @@
 from django.contrib import admin
-from .models import Diary, Log, AdminDiary
-
 
 # @admin.register(Diary)
 class DiaryAdmin(admin.ModelAdmin):

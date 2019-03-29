@@ -32,6 +32,7 @@ class Sort(models.Model):
 
     class Meta:
         verbose_name_plural = verbose_name = "文章分类"
+        db_table = 'sort'
 
 
 class Label(models.Model):
@@ -44,25 +45,18 @@ class Label(models.Model):
 
 
 class Article(models.Model):
-    """文章"""
-    # 文章的编号
-    article_feature = models.CharField(max_length=100, primary_key=True)
-    # 文章长度
+    id = models.BigAutoField(primary_key=True)
+    uuid = models.CharField(max_length=36, unique=True, db_index=True)
+    gmt_create = models.DateTimeField(auto_now_add=True)
+    gmt_modified = models.DateTimeField(auto_now=True)
+    username = models.CharField(max_length=50)
+    title = models.CharField(max_length=255)
+    text = models.TextField()
+    sort = models.CharField(max_length=255)
+    label = models.CharField(max_length=255, null=True)
+    see_number = models.IntegerField(null=True)
+    comment_number = models.IntegerField(null=True)
 
-    # 文章的分类
-    article_sort = models.ForeignKey(Sort, on_delete=models.SET_NULL, to_field="sort_feature", blank=True, null=True, verbose_name="分类")
-    # 文章的标签
-    article_label = models.CharField(max_length=255, null=True, verbose_name="标签")
-    # 文章发表时间
-    article_time = models.DateField(auto_now_add=True)
-    # 文章浏览数
-    article_see = models.IntegerField()
-    # 文章评论数
-    article_comment = models.IntegerField()
-    # 文章主题
-    article_theory = models.TextField(verbose_name="文章主题")
-    # 文章网页代码
-    article_html = models.TextField(verbose_name="文章内容")
-
-
+    class Meta:
+        db_table = 'article'
 

@@ -1,9 +1,15 @@
+from django.db.models import Count
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 import random
 import hashlib
-from .models import Diary, Log, AdminDiary
+from .models import Log, AdminDiary
 from app_upload.models import Article, Sort
 from collections import defaultdict
+from diary import globalContext
+import copy
+import jieba
+import json
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def logging(func):
@@ -64,86 +70,101 @@ def add_power(request):
             return render(request, 'jurisdiction_show.html', context)
 
 
-# @logging
-def index(request):
-    article_list = Article.objects.all().select_related().order_by('article_time')
-    for _ in article_list:
-        print(_.article_sort.sort_name)
-    # p = defaultdict(list)
+def index(request, page=1):
+    page = 1 if page == 0 else page
+    article_list = Article.objects.all().select_related().order_by('-gmt_create')
     p = []
-    # print("输出一下我的文章",ArticleList)
     for i in article_list:
         p.append(i)
-    return render(request, 'index.html', {"articleList": p})
-
-
-def write(request):
-    if request.method == 'POST':
-        rand = random.random()
-        sha = hashlib.sha1()
-        sha.update(str(rand).encode('utf-8'))
-        sign = sha.hexdigest()
-        n = 1
-        f = True
-        for i in request.POST:
-            if 'text' in i:
-                if f:
-                    a = AdminDiary(header=request.POST['title'], text=request.POST[i], share=0, identification_id=sign)
-                    a.save()
-                    f = False
-                d = Diary()
-                d.identification_id = sign
-                d.header = request.POST['title']
-                d.text = request.POST[i]
-                # d.date = time.time()
-                d.order_num = n
-                d.user_id = '1123'
-                d.save()
-                n += 1
-
-        for i in request.FILES:
-            if 'pic' in i:
-                d = Diary()
-                d.identification_id = sign
-                d.header = request.POST['title']
-                d.images = request.FILES[i]
-                d.order_num = n
-                d.user_id = '1123'
-                d.save()
-                n += 1
-
-        return render(request, 'write.html', {})
-    else:
-        return render(request, 'write.html', {})
+    paginator = Paginator(article_list, 15)
+    try:
+        p = paginator.page(page)
+    except PageNotAnInteger:
+        p = paginator.page(1)
+    except EmptyPage:
+        p = paginator.page(paginator.num_pages)
+    print(p.number)
+    g = copy.deepcopy(globalContext.primary())
+    g['home']['active'] = 'menu-item-active'
+    g['articleList'] = p
+    return render(request, 'index.html', g)
 
 
 # @jurisdiction
-def detail(request, article_feature):
-    return render(request, 'detail.html', {})
+def detail(request, uuid):
+    # 增加浏览数
+    a = Article.objects.get(uuid=uuid)
+    print(a.see_number)
+    if a.see_number is None:
+        a.see_number = 0
+    a.see_number += 1
+    Article.save(a)
+    return render(request, 'detail.html', {"article": a})
 
 
 def search(request):
-    return render(request, 'infor.html', {})
+    p = copy.deepcopy(globalContext.primary())
+    p['search']['active'] = 'menu-item-active'
+    return render(request, 'search.html', {})
 
 
-# def information(request):
-#     id = request.POST.get('id')
-#     print(id)
-#     try:
-#         stu = student.objects.get(number=id)
-#     except Exception as e:
-#         stu = None
-#     return render(request, 'infor2.html', {'stu': stu})
-#
-#
-# def save_information(request):
-#     if request.is_ajax():
-#         id = request.POST.get('ID')
-#         eng = request.POST.get('eng')
-#         # print(id, eng)
-#         a = student.objects.filter(number=id).values('number')
-#         print(a)
-#         if not a:
-#             return HttpResponse('2')
-#         else:
-#             return HttpResponse('succ')
+def search_result(request, art):
+    words = jieba.cut(art, cut_all=False)
+    # 获取数据
+    result = []
+    for w in words:
+        print(w)
+        if w == '' or w is None:
+            continue
+        result.append([w for w in Article.objects.values("uuid", "title").filter(title__contains=w)])
+    print(result)
+    return HttpResponse(json.dumps(result))
+
+
+def archive(request):
+    """
+    归档页面
+    :param request:
+    :return:
+    """
+    p = copy.deepcopy(globalContext.primary())
+    p['archive']['active'] = 'menu-item-active'
+    # 获取所有文档的标题与时间
+    article = Article.objects.all().values('uuid', 'gmt_create', 'title')
+    # 统计所有文章数
+    article_count = Article.objects.count()
+    article_list = defaultdict(list)
+    for i in article:
+        i['time'] = i['gmt_create'].strftime('%m-%d')
+        article_list[i['gmt_create'].strftime("%Y")].append(i)
+    p['archive']['article'] = dict(article_list)
+    p['archive']['count'] = article_count
+    return render(request, "archive.html", p)
+
+
+def categories(request):
+    """分类页面"""
+    p = copy.deepcopy(globalContext.primary())
+    p['categories']['active'] = 'menu-item-active'
+    # 获取分类信息
+    a = Article.objects.values("sort").annotate(count=Count('sort'))
+    p['categories']['data'] = [w for w in a]
+    p['categories']['count'] = Article.objects.values('sort').distinct().count()
+    return render(request, "categorie.html", p)
+
+
+def categories_list(request, name):
+    """具体分类列表页面"""
+    print(name)
+    p = copy.deepcopy(globalContext.primary())
+    p['categories']['active'] = 'menu-item-active'
+    p['categories']['sortName'] = name
+    p['categories']['article'] = Article.objects.filter(sort=name)
+
+    return render(request, "categorie_list.html", p)
+
+
+def timeline(request):
+    p = copy.deepcopy(globalContext.primary())
+    p['version']['active'] = 'menu-item-active'
+    return render(request, "version_develop.html", p)

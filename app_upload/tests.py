@@ -51,25 +51,47 @@ def test_twilo():
     message = client.messages.create(
         body="您好.我是你大哥",
         from_='+14235454908',
-        to='+8615657857080'
+        to='13857483191'
     )
 
     print(message.sid)
 
 
 def test_haspas():
-    from django.contrib.auth.hashers import make_password,check_password
+    from django.contrib.auth.hashers import make_password, check_password
 
     pwd = make_password("1996Chan", None, "default")
     print(pwd)
     print(check_password("1996Chan",  "pbkdf2_sha256$120000$dnQiKyWwYHWt$6M7+wYF8afQtz4SH2l3E4l8xDPr2CccY0aTWe5pfVyc="))
 
+
 def test_three():
-    str = "adsad.hh.1.ppo"
-    print(str.rsplit(".", 2))
+    cyan = "adsad.hh.1.ppo"
+    print(cyan.rsplit(".", 2))
+
+
+class Solution:
+    def remove_duplicates(self, nums: list) -> int:
+        per = 1
+        bu = nums[0]
+        for i in range(1, len(nums)):
+            if bu == nums[i]:
+                continue
+            nums[per] = nums[i]
+            bu = nums[i]
+            per += 1
+        return per
+
+
+def a():
+    print(13*(6**3) - 66*6*6 + 113*6-48)
 
 
 if __name__ == "__main__":
-    # test_twilo()
-    test_haspas()
+    test_twilo()
+    # test_haspas()
     # test_three()
+    # a = Solution().remove_duplicates([0, 0, 2, 2])
+    # print(a)
+    # a()
+
