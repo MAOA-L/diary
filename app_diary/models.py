@@ -17,10 +17,10 @@ class BlogUser(AbstractUser, models.Model):
     openId = models.CharField(max_length=50)
     gmtCreate = models.DateTimeField("创建时间", default=now)
     gmtModified = models.DateTimeField("修改时间", default=now)
-    phoneNumber = models.CharField("手机号", max_length=20)
-    nickname = models.CharField('昵称', max_length=100, blank=True)
+    phoneNumber = models.CharField("手机号", max_length=20, rel=None)
+    nickname = models.CharField('昵称', max_length=100, blank=True, rel=None)
     mugshot = models.ImageField('头像', upload_to='upload/mugshots', blank=True)
-    motto = models.CharField('座右铭', max_length=255, null=True)
+    motto = models.CharField('座右铭', max_length=255, null=True, rel=None)
 
     class Meta:
         db_table = "account_bloguser"

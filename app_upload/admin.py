@@ -30,3 +30,14 @@
 #             return obj.article_html
 #     article_html_short.short_description = '文章内容'
 #     # 届时将文章内容中文提取出来作为展示
+# import xadmin
+#
+# from app_upload.models import Article
+#
+#
+# class ArticleAdmin:
+#     list_display = ('title', 'sort')
+#     model_icon = 'fa fa-skype'
+#
+#
+# xadmin.site.register(Article, ArticleAdmin)

@@ -59,4 +59,5 @@ class Article(models.Model):
 
     class Meta:
         db_table = 'article'
+        ordering = ('-gmt_create', )
 

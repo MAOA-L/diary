@@ -1,6 +1,10 @@
+import xadmin
 from django.contrib import admin
 
 # @admin.register(Diary)
+from app_diary.models import AdminDiary
+
+
 class DiaryAdmin(admin.ModelAdmin):
     list_display = ['user', 'header', 'text', 'images', 'date', 'date_time', 'order_num']
     search_fields = ('date', 'date_time')
@@ -26,5 +30,3 @@ class AdminDiaryAdmin(admin.ModelAdmin):
         else:
             return obj.text
     texts.short_description = 'TEXT'
-
-
