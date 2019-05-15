@@ -25,11 +25,12 @@ from django.views.static import serve
 
 from diary import settings
 from diary.settings import MEDIA_ROOT
-
+from app_upload import urls as upload_urls
 
 urlpatterns = [
     path('', include(app_diary_urls)),
     path('api/', include(api_urls)),
+    path('u/', include(upload_urls)),
     # path('upload', include(app_upload_urls)),
     # path('admin/', admin.site.urls),
     # path('xadmin/', xadmin.site.urls, name="xamdin"),

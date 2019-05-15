@@ -1,8 +1,13 @@
+from django.core.cache import cache
 from django.shortcuts import render, HttpResponse
 import json
 import re
+
+from django.views.decorators.cache import cache_page
+
 from app_upload.util import (save_image, save_html)
 from .models import Sort
+import requests
 
 
 def index(request):
@@ -25,3 +30,25 @@ def index(request):
 
 def test(request):
     return render(request, "upload/test.html", {})
+
+
+@cache_page(timeout=5, cache='default', key_prefix='accesstoken')
+def cache(request):
+    import time
+    return HttpResponse(AccT().get_acc())
+
+
+class AccT:
+    """accstoken管理"""
+    def __init__(self):
+        self.APPID = 'wxcaaee441b8a862b8'
+        self.APPSECRET = 'db6e5e059073ed593513efdb3718aaf9'
+        self.url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}'
+
+    def get_acc(self):
+        """
+        获取access token
+        :return: access token
+        """
+        result = requests.get(self.url.format(self.APPID, self.APPSECRET)).content.decode('utf-8')
+        return json.loads(result)

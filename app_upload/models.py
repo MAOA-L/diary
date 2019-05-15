@@ -51,6 +51,7 @@ class Article(models.Model):
     gmt_modified = models.DateTimeField(auto_now=True)
     username = models.CharField(max_length=50)
     title = models.CharField(max_length=255)
+    markdown = models.TextField()
     text = models.TextField()
     sort = models.CharField(max_length=255)
     label = models.CharField(max_length=255, null=True)
