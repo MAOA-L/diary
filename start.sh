@@ -1,3 +1,3 @@
 #!/bin/bash
 python manage.py collectstatic
-uwsgi yourfile.ini
+uwsgi --ini uwsgi3031.ini
