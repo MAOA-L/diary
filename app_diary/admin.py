@@ -1,4 +1,3 @@
-import xadmin
 from django.contrib import admin
 
 # @admin.register(Diary)
