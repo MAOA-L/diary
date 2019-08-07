@@ -13,7 +13,7 @@ from django.core.wsgi import get_wsgi_application
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, PROJECT_DIR)
-sys.path.append('/usr/local/apache2/htdocs//diary')
+# sys.path.append('/usr/local/apache2/htdocs//diary')
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "diary.settings")
 
