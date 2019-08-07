@@ -13,23 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import xadmin
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.views import static
 
 from app_diary import urls as app_diary_urls
+from api import urls as api_urls
 from django.views.static import serve
 
 from diary import settings
 from diary.settings import MEDIA_ROOT
-
+from app_upload import urls as upload_urls
 
 urlpatterns = [
     path('', include(app_diary_urls)),
+    path('api/', include(api_urls)),
+    path('u/', include(upload_urls)),
     # path('upload', include(app_upload_urls)),
     # path('admin/', admin.site.urls),
-    # path('xadmin/', include(app_admin_urls)),
+    # path('xadmin/', xadmin.site.urls, name="xamdin"),
     url(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
