@@ -2,6 +2,6 @@ Django==2.2.4
 PyMySQL==0.9.3
 jieba==0.39
 requests==2.21.0
-Pillow==5.4.1
+Pillow==6.2.0
 djangorestframework==3.9.3
 uWSGI==2.0.18
